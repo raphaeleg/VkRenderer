@@ -24,12 +24,18 @@
     <ClCompile Include="Source\first_app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\lve_pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\lve_window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\first_app.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\lve_pipeline.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
