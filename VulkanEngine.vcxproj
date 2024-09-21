@@ -23,11 +23,13 @@
     <ClCompile Include="Source\lve_pipeline.cpp" />
     <ClCompile Include="Source\lve_window.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\lve_device.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\first_app.hpp" />
     <ClInclude Include="Source\lve_pipeline.hpp" />
     <ClInclude Include="Source\lve_window.hpp" />
+    <ClInclude Include="Source\lve_device.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
