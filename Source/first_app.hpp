@@ -21,7 +21,7 @@ namespace lve {
 	private:
 		LveWindow lveWindow{ WIDTH, HEIGHT, "Vulkan" };
 		LveDevice lveDevice{ lveWindow };
-		LveSwapChain lveSwapChain{ lveDevice, lveWindow.GetExtent() };
+		std::unique_ptr <LveSwapChain> lveSwapChain;
 		std::unique_ptr<LvePipeline> lvePipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
@@ -31,6 +31,9 @@ namespace lve {
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
+		void FreeCommandBuffers();
 		void DrawFrame();
+		void RecreateSwapChain();
+		void RecordCommandBuffer(int imageIndex);
 	};
 }	// namespace lve
