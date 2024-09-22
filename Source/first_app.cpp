@@ -118,14 +118,35 @@ namespace lve{
     }
 
     void FirstApp::LoadModels() {
-        std::vector<LveModel::Vertex> vertices{
-          {{ 0.0, -0.5 }},
-          { {0.5, 0.5 }},
-          {{ -0.5, 0.5 }}
+        std::vector<LveModel::Vertex> base{
+          {{ 0.0, -0.9 }},
+          { {0.9, 0.9 }},
+          {{ -0.9, 0.9 }}
         };
+        std::vector<LveModel::Vertex> vertices = SierpinskiTriangle(8, base);
+
         lveModel = std::make_unique<LveModel>(lveDevice, vertices);
     }
 
+    std::vector<LveModel::Vertex> FirstApp::SierpinskiTriangle(int depth, std::vector<LveModel::Vertex> v) {
+        if (depth < 1) {
+            return v;
+        }
+        // find the halfway point
+        auto a = v[0].position;
+        auto b = v[1].position;
+        auto c = v[2].position;
+        glm::vec2 ab = { (a.x + b.x) / 2, (a.y + b.y) / 2 };
+        glm::vec2 bc = { (b.x + c.x) / 2, (b.y + c.y) / 2 };
+        glm::vec2 ac = { (a.x + c.x) / 2, (a.y + c.y) / 2 };
+        auto d = depth - 1;
 
+        auto res = SierpinskiTriangle(d, { {a}, {ac}, {ab} });
+        auto res1 = SierpinskiTriangle(d, { {ab}, {b}, {bc} });
+        auto res2 = SierpinskiTriangle(d, { {ac}, {bc}, {c} });
 
+        res1.insert(res1.end(), res2.begin(), res2.end());
+        res.insert(res.end(), res1.begin(), res1.end());
+        return res;
+    }
 }	// namespace lve

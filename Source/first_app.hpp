@@ -28,6 +28,7 @@ namespace lve {
 		std::unique_ptr <LveModel> lveModel{};
 		
 		void LoadModels();
+		std::vector<LveModel::Vertex> SierpinskiTriangle(int depth, std::vector<LveModel::Vertex> v);
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
