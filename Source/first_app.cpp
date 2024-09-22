@@ -129,22 +129,24 @@ namespace lve{
     }
 
     std::vector<LveModel::Vertex> FirstApp::SierpinskiTriangle(int depth, std::vector<LveModel::Vertex> v) {
-        if (depth < 1) {
-            return v;
-        }
+        // base case
+        if (depth < 1) { return v; }
+
         // find the halfway point
         auto a = v[0].position;
         auto b = v[1].position;
         auto c = v[2].position;
-        glm::vec2 ab = { (a.x + b.x) / 2, (a.y + b.y) / 2 };
-        glm::vec2 bc = { (b.x + c.x) / 2, (b.y + c.y) / 2 };
-        glm::vec2 ac = { (a.x + c.x) / 2, (a.y + c.y) / 2 };
+        glm::vec2 ab = 0.5f * ( a + b );
+        glm::vec2 bc = 0.5f * ( b + c );
+        glm::vec2 ac = 0.5f * ( a + c );
         auto d = depth - 1;
 
+        // recursion
         auto res = SierpinskiTriangle(d, { {a}, {ac}, {ab} });
         auto res1 = SierpinskiTriangle(d, { {ab}, {b}, {bc} });
         auto res2 = SierpinskiTriangle(d, { {ac}, {bc}, {c} });
 
+        // output
         res1.insert(res1.end(), res2.begin(), res2.end());
         res.insert(res.end(), res1.begin(), res1.end());
         return res;
