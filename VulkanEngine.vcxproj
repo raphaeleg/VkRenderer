@@ -33,6 +33,10 @@
     <ClInclude Include="Source\lve_device.hpp" />
     <ClInclude Include="Source\lve_swap_chain.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\shaders\simple_shader.frag" />
+    <None Include="Source\shaders\simple_shader.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
