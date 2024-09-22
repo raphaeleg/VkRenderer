@@ -13,8 +13,11 @@ namespace lve {
 		LveWindow& operator*(const LveWindow&) = delete;
 
 		[[nodiscard]] inline bool shouldClose() { return glfwWindowShouldClose(window); }
+		VkExtent2D GetExtent() { return { width, height }; }
 		void CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface);
 	private: 
 		GLFWwindow* window;
+		uint32_t width;
+		uint32_t height;
 	};
 }	// namespace lve

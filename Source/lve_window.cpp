@@ -2,7 +2,8 @@
 #include <stdexcept>
 
 namespace lve {
-	LveWindow::LveWindow(int w, int h, std::string name) {
+	LveWindow::LveWindow(int w, int h, std::string name) 
+	: width(static_cast<uint32_t>(w)), height(static_cast<uint32_t>(h)) {
 		glfwInit();
 
 		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);

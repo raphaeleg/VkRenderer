@@ -1,6 +1,9 @@
 #pragma once
 #include "lve_window.hpp"
 #include "lve_pipeline.hpp"
+#include "lve_swap_chain.hpp"
+#include <memory>
+#include <vector>
 
 namespace lve {
 	class FirstApp {
@@ -8,16 +11,23 @@ namespace lve {
 		static constexpr int WIDTH = 800;
 		static constexpr int HEIGHT = 600;
 
+		FirstApp();
+		~FirstApp();
+		FirstApp(const FirstApp&) = delete;
+		FirstApp& operator=(const FirstApp&) = delete;
+
 		void run();
 	private:
 		LveWindow lveWindow{ WIDTH, HEIGHT, "Vulkan" };
 		LveDevice lveDevice{ lveWindow };
+		LveSwapChain lveSwapChain{ lveDevice, lveWindow.GetExtent() };
+		std::unique_ptr<LvePipeline> lvePipeline;
 		VkPipelineLayout pipelineLayout;
-		LvePipeline lvePipeline{
-			lveDevice, 
-			"Source/shaders/simple_shader.vert.spv", 
-			"Source/shaders/simple_shader.frag.spv",
-			LvePipeline::DefautlPipelineConfigInfo(WIDTH, HEIGHT)
-		};
+		std::vector<VkCommandBuffer> commandBuffers;
+		
+		void CreatePipelineLayout();
+		void CreatePipeline();
+		void CreateCommandBuffers();
+		void DrawFrame();
 	};
 }	// namespace lve
