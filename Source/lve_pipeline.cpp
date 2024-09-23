@@ -91,6 +91,7 @@ namespace lve {
 
         configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
         configInfo.viewportInfo.viewportCount = 1;
+        configInfo.viewportInfo.pViewports = nullptr;
         configInfo.viewportInfo.pNext = nullptr;
         configInfo.viewportInfo.scissorCount = 1;
         configInfo.viewportInfo.pScissors = nullptr;

@@ -13,7 +13,7 @@ namespace lve {
 		LveWindow& operator*(const LveWindow&) = delete;
 
 		[[nodiscard]] inline bool shouldClose() { return glfwWindowShouldClose(window); }
-		[[nodiscard]] inline bool isWindowResized() { return frameBufferResized; }
+		[[nodiscard]] inline bool isWindowResized() const { return frameBufferResized; }
 		[[nodiscard]] inline void ResetWindowResizedFlag() { frameBufferResized = false; }
 		VkExtent2D GetExtent() { return { width, height }; }
 		void CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface);
