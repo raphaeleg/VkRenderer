@@ -13,6 +13,8 @@ namespace lve{
 	void FirstApp::run() {
         SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass());
         LveCamera camera{};
+        //camera.SetViewDirection(glm::vec3(0.f), glm::vec3(0.5f, 0.0f, 1.0f));
+        camera.SetViewTarget(glm::vec3(-1.0f, -2.f, -2.f), glm::vec3(0.0f, 0.0f, 2.5f));
 
 		while (!lveWindow.shouldClose()) {
 			glfwPollEvents();
