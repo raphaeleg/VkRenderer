@@ -1,5 +1,6 @@
 #include "first_app.hpp"
 #include "simple_render_system.hpp"
+#include "lve_camera.hpp"
 #include <stdexcept>
 #include <array>
 #define GLM_FORCE_RADIANS
@@ -11,9 +12,13 @@ namespace lve{
 
 	void FirstApp::run() {
         SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass());
+        LveCamera camera{};
 
 		while (!lveWindow.shouldClose()) {
 			glfwPollEvents();
+            float aspect = lveRenderer.GetAspectRatio();
+            //camera.SetOrthographicProjection({ -aspect, aspect, -1, 1, -1, 1 });
+            camera.SetPerspectiveProjection(glm::radians(50.0f), aspect, 0.1f, 10.0f);
 
             if (auto commandBuffer = lveRenderer.BeginFrame()) {
                 // begin off-screen shadow pass
@@ -21,7 +26,7 @@ namespace lve{
                 // end off-screen shadow pass
 
                 lveRenderer.BeginSwapChainRenderPass(commandBuffer);
-                renderSystem.RenderGameObjects(commandBuffer, gameObjects);
+                renderSystem.RenderGameObjects(commandBuffer, gameObjects, camera);
                 lveRenderer.EndSwapChainRenderPass(commandBuffer);
                 lveRenderer.EndFrame();
             }
@@ -92,7 +97,7 @@ namespace lve{
         std::shared_ptr<LveModel> lveModel = createCubeModel(lveDevice, { 0.0f, 0.0f, 0.0f });
         auto cube = LveGameObject::CreateGameObject();
         cube.model = lveModel;
-        cube.transform.translation = { 0.0f, 0.0f, 0.5f };
+        cube.transform.translation = { 0.0f, 0.0f, 2.5f };
         cube.transform.scale = { 0.5f, 0.5f, 0.5f };
         gameObjects.push_back(std::move(cube));
     }

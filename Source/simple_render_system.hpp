@@ -1,5 +1,6 @@
 #pragma once
 #include "lve_game_object.hpp"
+#include "lve_camera.hpp"
 #include "lve_pipeline.hpp"
 #include <memory>
 #include <vector>
@@ -12,7 +13,11 @@ namespace lve {
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
-		void RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<LveGameObject>& gameObjects);
+		void RenderGameObjects(
+			VkCommandBuffer commandBuffer,
+			std::vector<LveGameObject> &gameObjects,
+			const LveCamera camera
+		);
 
 	private:
 		LveDevice &lveDevice ;
