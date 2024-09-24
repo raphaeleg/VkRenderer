@@ -14,10 +14,12 @@ namespace lve {
 	class LveModel {
 	public:
 		struct Vertex {
-			glm::vec2 position;
-			glm::vec3 color;
+			glm::vec2 position = glm::vec2{ 0.0f };
+			glm::vec3 color = glm::vec3{ 0.0f };
 
 			inline Vertex(glm::vec2 pos, glm::vec3 col) : position(pos), color(col) {};
+			inline Vertex(glm::vec2 pos) : position(pos) {};
+			inline Vertex() {};
 			static std::vector<VkVertexInputBindingDescription> GetBindingDescriptions();
 			static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
 		};
