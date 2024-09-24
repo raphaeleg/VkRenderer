@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\keyboard_movement_controller.cpp" />
+    <ClCompile Include="Source\lve_buffer.cpp" />
     <ClCompile Include="Source\lve_camera.cpp" />
     <ClCompile Include="Source\first_app.cpp" />
     <ClCompile Include="Source\lve_game_object.cpp" />
@@ -34,8 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\keyboard_movement_controller.hpp" />
+    <ClInclude Include="Source\lve_buffer.hpp" />
     <ClInclude Include="Source\lve_camera.hpp" />
     <ClInclude Include="Source\first_app.hpp" />
+    <ClInclude Include="Source\lve_frame_info.hpp" />
     <ClInclude Include="Source\lve_game_object.hpp" />
     <ClInclude Include="Source\lve_pipeline.hpp" />
     <ClInclude Include="Source\lve_renderer.hpp" />
