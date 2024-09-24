@@ -1,8 +1,8 @@
 #pragma once
 #include "lve_window.hpp"
+#include "lve_game_object.hpp"
 #include "lve_pipeline.hpp"
 #include "lve_swap_chain.hpp"
-#include "lve_model.hpp"
 #include <memory>
 #include <vector>
 
@@ -25,9 +25,9 @@ namespace lve {
 		std::unique_ptr<LvePipeline> lvePipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
-		std::unique_ptr <LveModel> lveModel{};
+		std::vector<LveGameObject> gameObjects{};
 		
-		void LoadModels();
+		void LoadGameObjects();
 		void CreatePipelineLayout();
 		void CreatePipeline();
 		void CreateCommandBuffers();
@@ -35,5 +35,6 @@ namespace lve {
 		void DrawFrame();
 		void RecreateSwapChain();
 		void RecordCommandBuffer(int imageIndex);
+		void RenderGameObjects(VkCommandBuffer commandBuffer);
 	};
 }	// namespace lve
