@@ -1,5 +1,6 @@
 #include "first_app.hpp"
 #include "simple_render_system.hpp"
+#include "rainbow_system.hpp"
 #include <stdexcept>
 #include <array>
 #define GLM_FORCE_RADIANS
@@ -11,6 +12,7 @@ namespace lve{
 
 	void FirstApp::run() {
         SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass());
+        RainbowSystem rainbowSystem{ 0.5f };
 
 		while (!lveWindow.shouldClose()) {
 			glfwPollEvents();
@@ -22,6 +24,7 @@ namespace lve{
 
                 lveRenderer.BeginSwapChainRenderPass(commandBuffer);
                 renderSystem.RenderGameObjects(commandBuffer, gameObjects);
+                rainbowSystem.update(1.f / 60, gameObjects);
                 lveRenderer.EndSwapChainRenderPass(commandBuffer);
                 lveRenderer.EndFrame();
             }
