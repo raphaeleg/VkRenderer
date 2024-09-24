@@ -22,20 +22,24 @@
     <ClCompile Include="Source\first_app.cpp" />
     <ClCompile Include="Source\lve_game_object.cpp" />
     <ClCompile Include="Source\lve_pipeline.cpp" />
+    <ClCompile Include="Source\lve_renderer.cpp" />
     <ClCompile Include="Source\lve_window.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\lve_device.cpp" />
     <ClCompile Include="Source\lve_swap_chain.cpp" />
     <ClCompile Include="Source\lve_model.cpp" />
+    <ClCompile Include="Source\simple_redner_system.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\first_app.hpp" />
     <ClInclude Include="Source\lve_game_object.hpp" />
     <ClInclude Include="Source\lve_pipeline.hpp" />
+    <ClInclude Include="Source\lve_renderer.hpp" />
     <ClInclude Include="Source\lve_window.hpp" />
     <ClInclude Include="Source\lve_device.hpp" />
     <ClInclude Include="Source\lve_swap_chain.hpp" />
     <ClInclude Include="Source\lve_model.hpp" />
+    <ClInclude Include="Source\simple_render_system.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\shaders\simple_shader.frag" />
