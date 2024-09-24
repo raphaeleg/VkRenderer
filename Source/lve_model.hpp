@@ -22,19 +22,30 @@ namespace lve {
 			static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
 		};
 
-		LveModel(LveDevice &device, const std::vector<Vertex>& vertices);
+		struct Data {
+			std::vector<Vertex> vertices{};
+			std::vector<uint32_t> indices{};
+		};
+
+		LveModel(LveDevice &device, const LveModel::Data &data);
 		~LveModel();
 		LveModel(const LveModel&) = delete;	// manages memory buffer and vulkan objects, must delete
 		LveModel& operator=(const LveModel&) = delete;
 
 		void Bind(VkCommandBuffer commandBuffer);
-		inline void Draw(VkCommandBuffer commandBuffer) { vkCmdDraw(commandBuffer, vertexCount, 1, 0, 0); }
+		void Draw(VkCommandBuffer commandBuffer);
 	private:
 		LveDevice& lveDevice;
 		VkBuffer vertexBuffer;
 		VkDeviceMemory vertexBufferMemory;	// memory management
 		uint32_t vertexCount;
 
+		bool hasIndexBuffer = false;
+		VkBuffer indexBuffer;
+		VkDeviceMemory indexBufferMemory;	// memory management
+		uint32_t indexCount;
+
 		void CreateVertexBuffers(const std::vector<Vertex>& vertices);
+		void CreateIndexBuffers(const std::vector<uint32_t>& indices);
 	};
 }	// namespace lve
