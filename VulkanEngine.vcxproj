@@ -28,7 +28,7 @@
     <ClCompile Include="Source\lve_device.cpp" />
     <ClCompile Include="Source\lve_swap_chain.cpp" />
     <ClCompile Include="Source\lve_model.cpp" />
-    <ClCompile Include="Source\simple_redner_system.cpp" />
+    <ClCompile Include="Source\simple_render_system.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\first_app.hpp" />

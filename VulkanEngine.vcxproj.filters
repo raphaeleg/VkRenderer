@@ -42,7 +42,7 @@
     <ClCompile Include="Source\lve_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\simple_redner_system.cpp">
+    <ClCompile Include="Source\simple_render_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
