@@ -23,6 +23,7 @@
     <ClCompile Include="Source\lve_buffer.cpp" />
     <ClCompile Include="Source\lve_camera.cpp" />
     <ClCompile Include="Source\first_app.cpp" />
+    <ClCompile Include="Source\lve_descriptors.cpp" />
     <ClCompile Include="Source\lve_game_object.cpp" />
     <ClCompile Include="Source\lve_pipeline.cpp" />
     <ClCompile Include="Source\lve_renderer.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Source\lve_buffer.hpp" />
     <ClInclude Include="Source\lve_camera.hpp" />
     <ClInclude Include="Source\first_app.hpp" />
+    <ClInclude Include="Source\lve_descriptors.hpp" />
     <ClInclude Include="Source\lve_frame_info.hpp" />
     <ClInclude Include="Source\lve_game_object.hpp" />
     <ClInclude Include="Source\lve_pipeline.hpp" />

@@ -15,11 +15,19 @@
 
 namespace lve{
     struct GlobalUbo {
-        glm::mat4 projectionView{ 1.0f };
-        glm::vec3 lightDirection = glm::normalize(glm::vec3{1.0f, -3.0f, -1.0f});
+        alignas(16) glm::mat4 projectionView{ 1.0f };
+        alignas(16) glm::vec3 lightDirection = glm::normalize(glm::vec3{1.0f, -3.0f, -1.0f});
     };
 
     static constexpr float MAX_FRAME_TIME = 60.f;
+
+    FirstApp::FirstApp() { 
+        globalPool = LveDescriptorPool::Builder(lveDevice)
+            .setMaxSets(LveSwapChain::MAX_FRAMES_IN_FLIGHT)
+            .addPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, LveSwapChain::MAX_FRAMES_IN_FLIGHT)
+            .build();
+        LoadGameObjects(); 
+    }
 
 	void FirstApp::run() {
         std::vector<std::unique_ptr<LveBuffer>> uboBuffers(LveSwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -33,7 +41,18 @@ namespace lve{
             uboBuffers[i]->map();
         }
 
-        SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass());
+        auto globalSetLayout = LveDescriptorSetLayout::Builder(lveDevice)
+            .addBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+            .build();
+
+        std::vector<VkDescriptorSet> globalDescriptorSets(LveSwapChain::MAX_FRAMES_IN_FLIGHT);
+        for (int i = 0; i < globalDescriptorSets.size(); i++) {
+            auto bufferInfo = uboBuffers[i]->descriptorInfo();
+            LveDescriptorWriter(*globalSetLayout, *globalPool)
+                .writeBuffer(0, &bufferInfo)
+                .build(globalDescriptorSets[i]);
+        }
+        SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout());
         LveCamera camera{};
 
         auto viewerObject = LveGameObject::CreateGameObject();
@@ -54,12 +73,11 @@ namespace lve{
             camera.SetViewYXZ(viewerObject.transform.translation, viewerObject.transform.rotation);
 
             float aspect = lveRenderer.GetAspectRatio();
-            //camera.SetOrthographicProjection({ -aspect, aspect, -1, 1, -1, 1 });
             camera.SetPerspectiveProjection(glm::radians(50.0f), aspect, 0.1f, 10.0f);
 
             if (auto commandBuffer = lveRenderer.BeginFrame()) {
                 int frameIndex = lveRenderer.GetFrameIndex();
-                FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera };
+                FrameInfo frameInfo{ frameIndex, frameTime, commandBuffer, camera, globalDescriptorSets[frameIndex]};
 
                 // update
                 GlobalUbo ubo{};
