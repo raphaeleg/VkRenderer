@@ -2,6 +2,7 @@
 #include "lve_model.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
+#include <unordered_map>
 
 namespace lve{
 
@@ -16,6 +17,7 @@ namespace lve{
 	class LveGameObject {
 	public:
 		using id_t = unsigned int;
+		using Map = std::unordered_map<id_t, LveGameObject>;
 
 		const id_t id;
 		std::shared_ptr<LveModel> model{};

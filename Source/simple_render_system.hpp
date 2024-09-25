@@ -14,7 +14,7 @@ namespace lve {
 		SimpleRenderSystem(const SimpleRenderSystem&) = delete;
 		SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
-		void RenderGameObjects(FrameInfo &frameInfo, std::vector<LveGameObject> &gameObjects);
+		void RenderGameObjects(FrameInfo &frameInfo);
 
 	private:
 		LveDevice &lveDevice ;
