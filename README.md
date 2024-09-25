@@ -19,13 +19,15 @@ A proper build script using CMake will be created at a later date, once the proj
 **❗To be implemented**
 
 <ins>Stage 1</ins>
-- Point Lights & Multiple light sources (Descriptor Sets)
+- Multiple light sources
 - Billboarding
 - Alpha Blending
 - Proper build script for others to run the code.
 - Comments and Documentation
 
 <ins>Stage 2</ins>
+- Error Handling for shader files when building
 - Project Compatibility with MacOS
+- Switch to Quaternion Rotations
 - Better Inputs
 - Crystal Shader
