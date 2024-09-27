@@ -1,5 +1,6 @@
 #include "first_app.hpp"
-#include "simple_render_system.hpp"
+#include "Systems/simple_render_system.hpp"
+#include "Systems/point_light_system.hpp"
 #include "keyboard_movement_controller.hpp"
 #include "lve_camera.hpp"
 #include "lve_buffer.hpp"
@@ -15,7 +16,8 @@
 
 namespace lve{
     struct GlobalUbo {
-        glm::mat4 projectionView{ 1.0f };
+        glm::mat4 projection{ 1.0f };
+        glm::mat4 view{ 1.0f };
         glm::vec4 ambientLightColor{ 1.0f, 1.0f, 1.0f, 0.02f };
         glm::vec3 lightPosition{ -1.0f };
         alignas(16) glm::vec4 lightColor{ 1.0f };
@@ -55,6 +57,7 @@ namespace lve{
                 .build(globalDescriptorSets[i]);
         }
         SimpleRenderSystem renderSystem(lveDevice, lveRenderer.GetSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout());
+        PointLightSystem pointLightSystem(lveDevice, lveRenderer.GetSwapChainRenderPass(), globalSetLayout->getDescriptorSetLayout());
         LveCamera camera{};
 
         auto viewerObject = LveGameObject::CreateGameObject();
@@ -91,13 +94,15 @@ namespace lve{
 
                 // update
                 GlobalUbo ubo{};
-                ubo.projectionView = camera.GetProjection() * camera.GetView();
+                ubo.projection = camera.GetProjection();
+                ubo.view = camera.GetView();
                 uboBuffers[frameIndex]->writeToBuffer(&ubo);
                 uboBuffers[frameIndex]->flush();
 
                 // render
                 lveRenderer.BeginSwapChainRenderPass(commandBuffer);
                 renderSystem.RenderGameObjects(frameInfo);
+                pointLightSystem.Render(frameInfo);
                 lveRenderer.EndSwapChainRenderPass(commandBuffer);
                 lveRenderer.EndFrame();
             }

@@ -42,8 +42,8 @@ namespace lve {
         shaderStages[1].pNext = nullptr;
         shaderStages[1].pSpecializationInfo = nullptr;
 
-        auto bindingDescriptions = LveModel::Vertex::GetBindingDescriptions();
-        auto attributeDescriptions = LveModel::Vertex::GetAttributeDescriptions();
+        auto& bindingDescriptions = configInfo.bindingDescriptions;
+        auto& attributeDescriptions = configInfo.attributeDescriptions;
         VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
         vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
         vertexInputInfo.vertexAttributeDescriptionCount =
@@ -154,6 +154,9 @@ namespace lve {
         configInfo.dynamicStateInfo.dynamicStateCount =
             static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
         configInfo.dynamicStateInfo.flags = 0;
+
+        configInfo.bindingDescriptions = LveModel::Vertex::GetBindingDescriptions();
+        configInfo.attributeDescriptions = LveModel::Vertex::GetAttributeDescriptions();
     }
 
     std::vector<char> LvePipeline::readFile(const std::string& filePath) {

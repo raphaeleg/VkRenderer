@@ -42,9 +42,6 @@
     <ClCompile Include="Source\lve_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\simple_render_system.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\keyboard_movement_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +52,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\lve_descriptors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\simple_render_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\point_light_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,9 +86,6 @@
     <ClInclude Include="Source\lve_renderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\simple_render_system.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\keyboard_movement_controller.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,12 +104,24 @@
     <ClInclude Include="Source\lve_descriptors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Systems\simple_render_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\point_light_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\shaders\simple_shader.frag">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Source\shaders\simple_shader.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\shaders\point_light.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\shaders\point_light.frag">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
