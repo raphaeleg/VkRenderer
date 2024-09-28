@@ -15,14 +15,6 @@
 #include <glm/gtc/constants.hpp>
 
 namespace lve{
-    struct GlobalUbo {
-        glm::mat4 projection{ 1.0f };
-        glm::mat4 view{ 1.0f };
-        glm::vec4 ambientLightColor{ 1.0f, 1.0f, 1.0f, 0.02f };
-        glm::vec3 lightPosition{ -1.0f };
-        alignas(16) glm::vec4 lightColor{ 1.0f };
-    };
-
     static constexpr float MAX_FRAME_TIME = 60.f;
 
     FirstApp::FirstApp() { 
@@ -96,6 +88,7 @@ namespace lve{
                 GlobalUbo ubo{};
                 ubo.projection = camera.GetProjection();
                 ubo.view = camera.GetView();
+                pointLightSystem.Update(frameInfo, ubo);
                 uboBuffers[frameIndex]->writeToBuffer(&ubo);
                 uboBuffers[frameIndex]->flush();
 
@@ -132,5 +125,29 @@ namespace lve{
         floor.transform.translation = { 0.f, .5f, 0.f };
         floor.transform.scale = 3.0f;
         gameObjects.emplace(floor.GetId(), std::move(floor));
+        {
+            auto pointLight = LveGameObject::MakePointLight(0.2f);
+
+            std::vector<glm::vec3> lightColors{
+                 {1.f, .1f, .1f},
+                 {.1f, .1f, 1.f},
+                 {.1f, 1.f, .1f},
+                 {1.f, 1.f, .1f},
+                 {.1f, 1.f, 1.f},
+                 {1.f, 1.f, 1.f}  //
+            };
+
+            for (int i = 0;  i < lightColors.size(); i++) {
+                auto pointLight = LveGameObject::MakePointLight(0.2f);
+                pointLight.color = lightColors[i];
+                auto rotateLight = glm::rotate(
+                    glm::mat4(1.0f),
+                    (i * glm::two_pi<float>()) / lightColors.size(),
+                    { 0.0f, -1.0f, 0.0f }
+                );
+                pointLight.transform.translation = glm::vec3(rotateLight * glm::vec4(-1.0f, -1.0f, -1.0f, 1.0f));
+                gameObjects.emplace(pointLight.GetId(), std::move(pointLight));
+            }
+        }
     }
 }	// namespace lve
