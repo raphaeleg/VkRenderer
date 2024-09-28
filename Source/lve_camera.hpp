@@ -25,8 +25,10 @@ namespace lve {
 		void SetViewYXZ(glm::vec3 position, glm::vec3 rotation);
 		const glm::mat4& GetProjection() const { return projectionMatrix; }
 		const glm::mat4& GetView() const { return viewMatrix; }
+		const glm::mat4& GetInverseView() const { return inverseViewMatrix; }
 	private:
 		glm::mat4 projectionMatrix{ 1.0f };
 		glm::mat4 viewMatrix{ 1.0f };
+		glm::mat4 inverseViewMatrix{ 1.0f };
 	};
 }	// namespace lve
