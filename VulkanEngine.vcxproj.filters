@@ -15,113 +15,113 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_window.cpp">
+    <ClCompile Include="src\lve_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\first_app.cpp">
+    <ClCompile Include="src\first_app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_pipeline.cpp">
+    <ClCompile Include="src\lve_pipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_device.cpp">
+    <ClCompile Include="src\lve_device.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_swap_chain.cpp">
+    <ClCompile Include="src\lve_swap_chain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_model.cpp">
+    <ClCompile Include="src\lve_model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_game_object.cpp">
+    <ClCompile Include="src\lve_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_renderer.cpp">
+    <ClCompile Include="src\lve_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\keyboard_movement_controller.cpp">
+    <ClCompile Include="src\keyboard_movement_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_camera.cpp">
+    <ClCompile Include="src\lve_camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_buffer.cpp">
+    <ClCompile Include="src\lve_buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\lve_descriptors.cpp">
+    <ClCompile Include="src\lve_descriptors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Systems\simple_render_system.cpp">
+    <ClCompile Include="src\Systems\simple_render_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Systems\point_light_system.cpp">
+    <ClCompile Include="src\Systems\point_light_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\lve_window.hpp">
+    <ClInclude Include="src\lve_window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\first_app.hpp">
+    <ClInclude Include="src\first_app.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_pipeline.hpp">
+    <ClInclude Include="src\lve_pipeline.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_device.hpp">
+    <ClInclude Include="src\lve_device.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_swap_chain.hpp">
+    <ClInclude Include="src\lve_swap_chain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_model.hpp">
+    <ClInclude Include="src\lve_model.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_game_object.hpp">
+    <ClInclude Include="src\lve_game_object.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_renderer.hpp">
+    <ClInclude Include="src\lve_renderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\keyboard_movement_controller.hpp">
+    <ClInclude Include="src\keyboard_movement_controller.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_camera.hpp">
+    <ClInclude Include="src\lve_camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_utils.hpp">
+    <ClInclude Include="src\lve_utils.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_buffer.hpp">
+    <ClInclude Include="src\lve_buffer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_frame_info.hpp">
+    <ClInclude Include="src\lve_frame_info.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\lve_descriptors.hpp">
+    <ClInclude Include="src\lve_descriptors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\simple_render_system.hpp">
+    <ClInclude Include="src\Systems\simple_render_system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\point_light_system.hpp">
+    <ClInclude Include="src\Systems\point_light_system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source\shaders\simple_shader.frag">
+    <None Include="src\shaders\simple_shader.frag">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Source\shaders\simple_shader.vert">
+    <None Include="src\shaders\simple_shader.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Source\shaders\point_light.vert">
+    <None Include="src\shaders\point_light.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Source\shaders\point_light.frag">
+    <None Include="src\shaders\point_light.frag">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
