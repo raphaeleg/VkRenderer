@@ -129,6 +129,7 @@ namespace lve {
 		std::vector<tinyobj::material_t> materials;
 		std::string warn, err;
 		if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filepath.c_str())) {
+			std::cout << warn << " " << err << " " << filepath.c_str() << "\n";
 			throw std::runtime_error(warn + err);
 		}
 		vertices.clear();
